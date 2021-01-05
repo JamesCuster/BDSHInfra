@@ -19,3 +19,6 @@ sdf
 \description{
 type description
 }
+\examples{
+#asdf
+}
