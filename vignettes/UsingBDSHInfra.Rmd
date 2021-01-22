@@ -1,5 +1,5 @@
 ---
-title: "Using BDSHInfra"
+title: "Using infra"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{UsingBDSHInfra}
@@ -15,5 +15,5 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(BDSHInfra)
+library(infra)
 ```

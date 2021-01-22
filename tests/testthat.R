@@ -1,4 +1,4 @@
 library(testthat)
-library(BDSHInfra)
+library(infra)
 
-test_check("BDSHInfra")
+test_check("infra")
