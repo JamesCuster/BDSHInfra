@@ -12,8 +12,89 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+options(rmarkdown.html_vignette.check_title = FALSE)
 ```
 
 ```{r setup}
 library(infra)
 ```
+
+
+
+# Assigning Variable Types
+The function `type` can be used to assign the type attribute to a single vector, a column in a `data.frame`, of multiple columns of a `data.frame`. There are a couple ways to use the function depending on the object that the `type` attribute is being assigned. 
+
+The following is a list of the `type`'s that are available. If a type other than these is used, and error is returned.
+
+- id
+- y
+- y2
+- t
+- t2
+- e
+- e2
+- x 
+
+## Assign `type` to vector
+```{r, error=TRUE}
+foo <- rnorm(20)
+
+type(foo) <- "x"
+type(foo)
+
+type(foo) <- "error"
+```
+
+## Assign `type` to a single `data.frame` column.
+```{r}
+type(test$usubjid) <- "id"
+type(test$usubjid)
+```
+
+## Assign `type` to `data.frame`
+
+### Assign to entire `data.frame` 
+
+
+`value` is assigned by the index of `value` to the corresponding column of x. There are alternative approaches as well.
+```{r}
+test2 <- test[, 1:6]
+
+type(test2) <- c("id", "id", "id", "x", "x", "x")
+
+# Still need to write this method to display the types for all variables in data.frame
+# type(test2)
+```
+
+
+### Using a named vector
+```{r}
+set.seed(4)
+vnames <- sample(names(test), 6)
+v <- c("x", "id", "x", "y", "x", "x")
+v <- setNames(v, vnames)
+v
+
+test2 <- test[, vnames]
+type(test2) <- v
+# type(test2)
+```
+
+
+
+
+### Using the fill option in the method for `data.frame`
+
+In order for the `type` function to work on a `data.frame`, a type must be assigned to every column. Thus the parameters in  `data.frame` method for `type` must be that `length(value) == ncol(x)`, unless the `fill` parameter is used. Using the fill parameter allows you to specify one variable type that is assigned to all the columns which are not explicitly named.
+```{r}
+v
+type(test, fill = "x") <- v
+# type(test)
+```
+
+<!-- `NA` can also be used as a fill value to exclude unused variables. -->
+<!-- ```{r} -->
+<!-- type(test, fill = NA) <- v -->
+<!-- ``` -->
+
