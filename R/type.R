@@ -164,5 +164,7 @@ type.default <- function(x, ...) {
 #'
 #' @examples #asd
 type.data.frame <- function(x, ...) {
-  #
+  types <- mapply(x, FUN = type, USE.NAMES=FALSE)
+  names(types) <- names(x)
+  return(types)
 }
