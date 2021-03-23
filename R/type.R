@@ -28,8 +28,8 @@
 #' @examples #asdf
 `type<-.default` <- function(x, ..., value) {
   # value must be one of the following types
-  if (is.na(charmatch(value, c("", "id", "y", "y2", "t", "t2", "e", "e2", "x")))) {
-    stop('`value` must be one of "", "id", "y", "y2", "t", "t2", "e", "e2", "x"')
+  if (is.na(charmatch(value, c("", "id", "y", "y2", "t", "t2", "e", "e2", "x", NA_character_)))) {
+    stop('`value` must be one of "", "id", "y", "y2", "t", "t2", "e", "e2", "x", NA_character_')
   }
   # Check value is character vector of length 1
   if (!is.character(value) | length(value) != 1L) {
@@ -86,8 +86,8 @@
       }
     }
   } else {
-    if (is.na(charmatch(fill, c("", "id", "y", "y2", "t", "t2", "e", "e2", "x")))) {
-      stop('`fill` must be one of "", "id", "y", "y2", "t", "t2", "e", "e2", "x"')
+    if (is.na(charmatch(fill, c("", "id", "y", "y2", "t", "t2", "e", "e2", "x", NA_character_)))) {
+      stop('`fill` must be one of "", "id", "y", "y2", "t", "t2", "e", "e2", "x", NA_character_')
     }
     if (is.list(fill)) {
 
