@@ -2,7 +2,10 @@
 
 S3method("type<-",data.frame)
 S3method("type<-",default)
+S3method(summaryTable,numeric)
 S3method(type,data.frame)
 S3method(type,default)
 export("type<-")
+export(dataPrep)
+export(summaryTable)
 export(type)
